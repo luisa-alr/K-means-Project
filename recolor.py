@@ -49,7 +49,7 @@ def calculate_sse(data, centroids, cluster_assignments):
     for cluster, centroid in enumerate(centroids):
         cluster_data = data[cluster_assignments == cluster]
         if len(cluster_data) > 0:
-            sse += np.sqrt(np.sum((cluster_data - centroid) ** 2))
+            sse += np.sum((cluster_data - centroid) ** 2)
     return sse
 
 
