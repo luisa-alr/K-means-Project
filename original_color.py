@@ -36,7 +36,7 @@ def calculate_sse(data, centroids, cluster_assignments):
     for cluster, centroid in enumerate(centroids):
         cluster_data = data[cluster_assignments == cluster]
         if len(cluster_data) > 0:
-            sse += np.sqrt(np.sum((cluster_data - centroid) ** 2))
+            sse += np.sum((cluster_data - centroid) ** 2)
     return sse
 
 # Perform k-means clustering
@@ -49,7 +49,7 @@ def kmeans(data, k, initial_centroids, max_iterations=50):
         if np.array_equal(centroids, prev_centroids):
             break
     sse = calculate_sse(data, centroids, cluster_assignments)
-    return centroids, cluster_assignments, sse/255.0
+    return centroids, cluster_assignments, sse
 
 
 # Load image
